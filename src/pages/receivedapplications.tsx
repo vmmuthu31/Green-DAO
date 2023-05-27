@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
-import { GETLOAN } from './BlockchainServices'
+import { GETLOAN } from '../BlockchainServices'
 import { useAccount } from "wagmi";
 import {format} from "date-fns"
 

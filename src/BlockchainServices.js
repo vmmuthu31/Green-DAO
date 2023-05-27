@@ -1,6 +1,6 @@
 import Web3 from "web3";
-import Soulbound from "./abi/Soulbound.json";
-import loanabi from "./abi/Loans.json";
+import Soulbound from "./pages/abi/Soulbound.json";
+import loanabi from "./pages/abi/Loans.json";
 import { ethers } from "ethers";
 
 const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js

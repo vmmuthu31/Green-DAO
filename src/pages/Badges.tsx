@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import  Header  from "./components/Header";
 import BadgeTile  from "./components/tiles/BadgeTile";
-import { GETNFT } from "./BlockchainServices";
+import { GETNFT } from "../BlockchainServices";
 import { useAccount } from "wagmi";
 import Link from "next/link"
 
