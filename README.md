@@ -59,11 +59,11 @@ To build this solution, the following steps would be required:
 4. Technologies: Blockchain, Cloud (AWS).
 5. UseCases: We use Biconomy Social-Auth to connect web2 user to web3. As farmers has no idea regards wallet it will be the gateway to them. We use Push protocols to notify each step to step progress updation. And the Filecoin blockchain records transactions to provide verification of file storage 
 
-# To run our project
+# To run our project:
  Markup :
 1. npm i --legacy-peer-deps
 2. npm run dev 
 
 
-## Presentation Link
+## Presentation Link:
 https://www.canva.com/design/DAFjih72Bkw/0v0omQUYKmytBMKGpvDZCg/edit?utm_content=DAFjih72Bkw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
