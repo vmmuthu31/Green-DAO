@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import dynamic from 'next/dynamic'
-import { approvelo } from '../BlockchainServices';
+import { approvelo } from './BlockchainServices';
 
 const Header = dynamic(() => import('./components/Header'), {
   ssr: false,

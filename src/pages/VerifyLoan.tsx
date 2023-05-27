@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Header  from './components/Header'
 import Link from 'next/link'
-import { approvelo, verifylo } from '../BlockchainServices';
+import { approvelo, verifylo } from './BlockchainServices';
 
 interface User {
     aadhaarnumber: string;

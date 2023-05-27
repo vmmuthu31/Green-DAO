@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import {
   useAccount
 } from "wagmi";
-import {MINTNFT} from "../BlockchainServices"
+import {MINTNFT} from "./BlockchainServices"
 import {AiFillDelete} from "react-icons/ai"
 import dynamic from 'next/dynamic'
 

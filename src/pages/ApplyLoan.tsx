@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Header  from './components/Header'
 
-import { ADDLOAN } from '../BlockchainServices'
+import { ADDLOAN } from './BlockchainServices'
 
 interface User {
   farmername: string;
