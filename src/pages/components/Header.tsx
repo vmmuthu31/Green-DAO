@@ -11,7 +11,8 @@ import Web3 from 'web3';
 import truncateEthAddress from 'truncate-eth-address'
 import { useState } from 'react'
 import {Web3Context} from "../../config/Web3Context"
-import localStorage from "localStorage"
+// Now you can use 'localStorage' with the 'any' type.
+
 
 const Header = () => {
   const darkMode = useDarkMode(false);
