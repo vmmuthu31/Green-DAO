@@ -50,14 +50,14 @@ function Editor() {
           <div className="flex items-center gap-2">
             <div className=" flex w-full items-center gap-4">
               <input
-                className="h-[44px] border-2 p-2 sm:w-[400px]"
+                className="h-[44px] border-2 text-gray-800 p-2 sm:w-[400px]"
                 {...register(String(i), {
                   required: 'This field is required.'
                 })}
-                placeholder="Key"
+                placeholder="Lat, Long"
               />
               <input
-                className="h-[44px] border-2 p-2 sm:w-[400px]"
+                className="h-[44px] border-2 p-2 text-gray-800 sm:w-[400px]"
                 {...register(String(i + '_val'), {
                   required: 'This field is required.'
                 })}
@@ -112,7 +112,7 @@ function Editor() {
         <div>
           <p className="font-raj text-lg font-semibold">Farmer Name: </p>
           <input
-            className="h-[44px] border-2 p-2 sm:w-[400px]"
+            className="h-[44px] border-2 text-gray-800 p-2 sm:w-[400px]"
             {...register('badgeName', {
               required: 'This field is required.'
             })}
@@ -123,7 +123,7 @@ function Editor() {
             Farmer Wallet Address:{' '}
           </p>
           <input
-            className="h-[44px] border-2 p-2 sm:w-[400px]"
+            className="h-[44px] border-2 text-gray-800 p-2 sm:w-[400px]"
             {...register('walletAddr', {
               required: 'This field is required.'
             })}
@@ -134,7 +134,7 @@ function Editor() {
         <div>
           <p className="font-raj text-lg font-semibold">Land Location: </p>
           <input
-            className="h-[44px] border-2 p-2 sm:w-[400px]"
+            className="h-[44px] border-2 text-gray-800 p-2 sm:w-[400px]"
             {...register('product', {
               required: 'This field is required.'
             })}
@@ -145,7 +145,7 @@ function Editor() {
             Area (in Acres):{' '}
           </p>
           <input
-            className="h-[44px] border-2 p-2 sm:w-[400px]"
+            className="h-[44px] border-2 text-gray-800 p-2 sm:w-[400px]"
             {...register('quantity', {
               required: 'This field is required.'
             })}

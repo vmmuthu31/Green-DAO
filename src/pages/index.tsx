@@ -26,7 +26,7 @@ export default function Home() {
       <Header />
       <div className="relative isolate px-6 pt-14 lg:px-8">
        
-        <div className="mx-auto max-w-3xl py-32 sm:py-48 lg:py-[80px]">
+        <div className="mx-auto max-w-3xl py-20 sm:py-48 lg:py-[80px]">
          
           <div className="text-center justify-center">
             <h1 className="text-4xl md:pt-20 font-bold pb-10 tracking-tight text-green-700 sm:text-6xl">

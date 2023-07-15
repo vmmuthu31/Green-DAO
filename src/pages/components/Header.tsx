@@ -35,7 +35,7 @@ const Header = () => {
     
 
   const [connected, setConnected] = useState(false);
-
+  const web3 =  getWeb3();
   //   console.log(address);
   // }
   useEffect(() => {
@@ -91,7 +91,7 @@ const Header = () => {
   ]
 
   return (
-    <Web3Context.Provider value={web3}>
+    <Web3Context.Provider value={Web3}>
    
   
       <header className="absolute inset-x-0 top-0 z-50">
@@ -119,7 +119,7 @@ const Header = () => {
        
         <div className="hidden lg:flex lg:gap-x-12 ">
           
-        {address == "0x01e24d130cf4c5599954115c5026276b4797a171" ? <>
+        {address == "0x3907bAdE047531158c97c8C51b95c72a51E5e37e" ? <>
         {navigation.map((item) => (
             <Link key={item.name} href={item.href} className="text-lg mt-2 text-white font-semibold leading-6 pt-5">
               {item.name}
@@ -132,7 +132,7 @@ const Header = () => {
           ))}</>}
       {connected ? (
         <>
-          <div className="text-white font-bold text-md pt-7">My Account:{truncateEthAddress(address)}</div>
+          <div className="text-blue-300 font-bold text-md pt-7">My Account:{truncateEthAddress(address)}</div>
           <button className="text-white font-bold text-md pt-2 btn-grad1" onClick={handleDisconnect}>Disconnect</button>
         
         </>
@@ -168,32 +168,32 @@ const Header = () => {
               <div className="space-y-2 py-6">
               {address == "0x3907bAdE047531158c97c8C51b95c72a51E5e37e" ? <>
         {navigation.map((item) => (
-            <Link key={item.name} href={item.href} className="text-lg mt-2 text-white font-semibold leading-6 ">
+            <Link key={item.name} href={item.href} className="text-lg flex mt-2 text-black font-semibold leading-6 ">
               {item.name}
             </Link>
           ))}</>:<>
            {navigation2.map((item) => (
-            <Link key={item.name} href={item.href} className="text-lg mt-2 text-white font-semibold leading-6 ">
+            <Link key={item.name} href={item.href} className="text-lg mt-2 text-black flex font-semibold leading-6 ">
               {item.name}
             </Link>
           ))}</>}
-       {connected ? (
+      
+              </div>
+              <div className="py-6">
+                <p
+                  
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                 {connected ? (
         <>
-          <div>Connected Accounts: {truncateEthAddress(address)}</div>
+          <div>My Accounts: {truncateEthAddress(address)}</div>
           <button onClick={handleDisconnect}>Disconnect</button>
         
         </>
       ) : (
         <button onClick={handleConnect}>Connect</button>
       )}
-              </div>
-              <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Log in
-                </a>
+                </p>
               </div>
             </div>
           </div>
