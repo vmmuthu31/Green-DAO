@@ -12,7 +12,7 @@ if (ethereum) {
 
 const AGRI_FUND = "0xABd42e1345C028D4A770B0f2C531DfAaEAB81688";
 
-const LOAN = "0x62e24E4c087627F44Bbe41BdedBE573343538D87";
+const LOAN = "0x7ec35d4a44aDE03c99206de9aC20AdB68D55db3D";
 
 export const ADDLOAN = async ({
   farmername,
