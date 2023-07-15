@@ -43,7 +43,7 @@ const Receivedapplications = () => {
         Received Application
       </h1>
       <div className='px-5 md:mx-20 overflow-x-scroll md:overflow-hidden'>
-  <table className=''>
+  <table className='md:ml-20'>
     <tr className='space-x-5 border-white border-2 text-2xl text-green-300'>
       <th className='p-5'>Farmer Name</th>
       <th className='p-5'>Aadhaar Number</th>

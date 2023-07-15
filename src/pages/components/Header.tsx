@@ -144,7 +144,7 @@ const Header = () => {
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-50" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-800 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
@@ -160,20 +160,20 @@ const Header = () => {
               onClick={() => setMobileMenuOpen(false)}
             >
               <span className="sr-only">Close menu</span>
-              <HiXMark className="h-6 w-6" aria-hidden="true" />
+              <HiXMark className="h-8 w-8 text-gray-200 rounded-lg border-white border" aria-hidden="true" />
             </button>
           </div>
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
+              <div className="space-y-6 mt-5 py-6">
               {address == "0x3907bAdE047531158c97c8C51b95c72a51E5e37e" ? <>
         {navigation.map((item) => (
-            <Link key={item.name} href={item.href} className="text-lg flex mt-2 text-black font-semibold leading-6 ">
+            <Link key={item.name} href={item.href} className="text-lg flex mt-2 text-white font-semibold leading-6 hover:bg-gray-700">
               {item.name}
             </Link>
           ))}</>:<>
            {navigation2.map((item) => (
-            <Link key={item.name} href={item.href} className="text-lg mt-2 text-black flex font-semibold leading-6 ">
+            <Link key={item.name} href={item.href} className="text-lg mt-2 text-gray-200 flex font-semibold leading-6  hover:bg-gray-700">
               {item.name}
             </Link>
           ))}</>}
@@ -182,16 +182,16 @@ const Header = () => {
               <div className="py-6">
                 <p
                   
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className=" block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-200 hover:bg-gray-700"
                 >
                  {connected ? (
         <>
           <div>My Accounts: {truncateEthAddress(address)}</div>
-          <button onClick={handleDisconnect}>Disconnect</button>
+          <button className="btn-grad1" onClick={handleDisconnect}>Disconnect</button>
         
         </>
       ) : (
-        <button onClick={handleConnect}>Connect</button>
+        <button className="btn-grad" onClick={handleConnect}>Connect</button>
       )}
                 </p>
               </div>

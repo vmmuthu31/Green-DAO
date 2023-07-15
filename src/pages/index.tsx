@@ -32,14 +32,14 @@ export default function Home() {
             <h1 className="text-4xl md:pt-20 font-bold pb-10 tracking-tight text-green-700 sm:text-6xl">
             Green DAO
             </h1>
-            <span className="text-3xl  glow">Building the farmers for the next generation. Its an DAO to help the farmers with the supplychain management, getting identity and apply for the loans.</span> 
+            <span className="text-lg md:text-3xl  glow">Building the farmers for the next generation. Its an DAO to help the farmers with the supplychain management, getting identity and apply for the loans.</span> 
             <Link href="/ApplyLoan">
             <button className="btn-grad3 mt-8 ">Get Started</button>
             </Link>
           </div>
         </div>
       </div>
-      <div className="bg-[#140506] pt-20 flex flex-col sm:flex-row justify-between px-4 sm:px-10">
+      <div className="bg-[#140506] md:pt-20 flex flex-col sm:flex-row justify-between px-4 sm:px-10">
         <h3 className="text-center text-lg text-green-300 mb-4 sm:mb-0">
           Follow us on Twitter, Insta
         </h3>
