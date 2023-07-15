@@ -70,6 +70,30 @@ export const verifylo = async ({ aadhaarnumber }) => {
   return tokenId;
 };
 
+export const provideloans = async ({ aadhaarnumber, loanamount }) => {
+  const provider =
+    window.ethereum != null
+      ? new ethers.providers.Web3Provider(window.ethereum)
+      : ethers.providers.getDefaultProvider();
+  const signer = provider.getSigner();
+  const Role = new ethers.Contract(LOAN, loanabi, signer);
+  const tokenId = await Role.sendLoanAmount(aadhaarnumber, loanamount);
+  return tokenId;
+};
+export const payloans = async ({ aadhaarnumber, loanamount }) => {
+  const provider =
+    window.ethereum != null
+      ? new ethers.providers.Web3Provider(window.ethereum)
+      : ethers.providers.getDefaultProvider();
+  const signer = provider.getSigner();
+  const Role = new ethers.Contract(LOAN, loanabi, signer);
+  const current = localStorage.getItem("walletaddress");
+  const tokenId = await Role.repayLoan(aadhaarnumber, loanamount, {
+    value: loanamount,
+  });
+  return tokenId;
+};
+
 export const MINTNFT = async ({
   name,
   receiver,

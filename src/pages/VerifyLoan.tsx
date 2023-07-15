@@ -87,6 +87,9 @@ const VerifyLoan= () => {
       <th className='p-5'>Reason for Loan</th>
       <th className='p-5'>Status</th>
       <th className='p-5'>Applied At</th>
+      <th className='p-5'>Loan Sanctioned</th>
+      <th className='p-5'>Deadline</th>
+      <th className='p-5'>IsPaid</th>
     </tr>
 
     <tr className='border-white text-lg border-2 text-white text-center' key="1">
@@ -96,6 +99,9 @@ const VerifyLoan= () => {
       <td>{field[3]}</td>
       <td>{field[4] === true ? "approved" : "unapproved"}</td>
       <td>2023</td>
+      <td>{field[6] === true ? "Sanctioned" : "Not Sanctioned"}</td>
+      <td>30</td>
+      <td>{field[8] === true ? "Paid" : "Not Paid"}</td>
     </tr>
   </table>
 </div>

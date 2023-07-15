@@ -11,7 +11,7 @@ import Web3 from 'web3';
 import truncateEthAddress from 'truncate-eth-address'
 import { useState } from 'react'
 import {Web3Context} from "../../config/Web3Context"
-
+import localStorage from "localStorage"
 
 const Header = () => {
   const darkMode = useDarkMode(false);
@@ -70,6 +70,7 @@ const Header = () => {
       console.error('Error connecting:', error);
     }
   };
+ 
 
   const handleDisconnect = () => {
     setAccounts([]);
@@ -77,18 +78,20 @@ const Header = () => {
   };
 
   const navigation = [
-    { name: 'Create an badge', href: '/Editor' },
-    { name: 'Approve Loans', href: '/ApproveLoan' },
-    { name: 'Received Loans', href: '/receivedapplications' },
-   
+    { name: 'Create', subname:'an badge', href: '/Editor' },
+    { name: 'Approve',  subname:'Loans', href: '/ApproveLoan' },
+    { name: 'Received',  subname:'Loans', href: '/receivedapplications' },
+    { name: 'Provide',  subname:'Loan', href: '/ProvideLoan' },
   ]
+
   const navigation2 = [
-    { name: 'My Badges', href: '/Badges' },
-    { name: 'Applyloan', href: '/ApplyLoan' },
-    { name: 'Verify Loan', href: '/VerifyLoan' },
-    { name: 'Learn', href: '/Learn' },
-   
+    { name: 'My Badges', subname:'',  href: '/Badges' },
+    { name: 'Apply', subname:'Loan', href: '/ApplyLoan' },
+    { name: 'Verify', subname:'Loan', href: '/VerifyLoan' },
+    { name: 'Pay', subname:'Loan', href: '/Payloan' },
+    { name: 'Learn', subname:'', href: '/Learn' },
   ]
+  localStorage.setItem(address,"walletaddress")
 
   return (
     <Web3Context.Provider value={Web3}>
@@ -121,18 +124,20 @@ const Header = () => {
           
         {address == "0x3907bAdE047531158c97c8C51b95c72a51E5e37e" ? <>
         {navigation.map((item) => (
-            <Link key={item.name} href={item.href} className="text-lg mt-2 text-white font-semibold leading-6 pt-5">
-              {item.name}
+            <Link key={item.name} href={item.href} className="text-lg text-center mt-2 text-white font-semibold leading-6 pt-5">
+              {item.name} &nbsp;
+              {item.subname}
             </Link>
           ))}</>:<>
            {navigation2.map((item) => (
             <Link key={item.name} href={item.href} className="text-lg mt-2 text-white font-semibold leading-6 pt-5">
-              {item.name}
+              {item.name} &nbsp;
+              {item.subname}
             </Link>
           ))}</>}
       {connected ? (
         <>
-          <div className="text-blue-300 font-bold text-md pt-7">My Account:{truncateEthAddress(address)}</div>
+          {/* <div className="text-blue-300 font-bold text-md pt-7">My Account:{truncateEthAddress(address)}</div> */}
           <button className="text-white font-bold text-md pt-2 btn-grad1" onClick={handleDisconnect}>Disconnect</button>
         
         </>
@@ -186,7 +191,7 @@ const Header = () => {
                 >
                  {connected ? (
         <>
-          <div>My Accounts: {truncateEthAddress(address)}</div>
+          {/* <div>My Accounts: {truncateEthAddress(address)}</div> */}
           <button className="btn-grad1" onClick={handleDisconnect}>Disconnect</button>
         
         </>

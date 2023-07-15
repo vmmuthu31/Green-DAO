@@ -51,6 +51,9 @@ const Receivedapplications = () => {
       <th className='p-5'>Reason for Loan</th>
       <th className='p-5'>Status</th>
       <th className='p-5'>Applied At</th>
+       <th className='p-5'>Loan Sanctioned</th>
+      <th className='p-5'>Deadline</th>
+      <th className='p-5'>IsPaid</th>
     </tr>
     {field?.map((data: any, index) => (
       <tr className='border-white text-lg border-2  text-white text-center' key={index}>
@@ -60,6 +63,9 @@ const Receivedapplications = () => {
         <td>{data[3]}</td>
         <td>{data[4] === true ? 'approved' : 'unapproved'}</td>
         <td>2023</td>
+        <td>{data[6] === true ? "Sanctioned" : "Not Sanctioned"}</td>
+      <td>30</td>
+      <td>{data[8] === true ? "Paid" : "Not Paid"}</td>
       </tr>
     ))}
   </table>
