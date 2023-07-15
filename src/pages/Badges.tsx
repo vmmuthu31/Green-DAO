@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import  Header  from "./components/Header";
-import BadgeTile  from "./components/tiles/BadgeTile";
+import Header from "./components/Header";
+import BadgeTile from "./components/tiles/BadgeTile";
 import { GETNFT } from "./BlockchainServices";
 import { useAccount } from "wagmi";
-import Link from "next/link"
-
+import Link from "next/link";
 
 function Badges() {
   const { address, isConnected } = useAccount();
@@ -15,7 +14,10 @@ function Badges() {
 
   useEffect(() => {
     async function fetchData() {
-      if (isConnected && address !== "0x3907bAdE047531158c97c8C51b95c72a51E5e37e") {
+      if (
+        isConnected &&
+        address !== "0x3907bAdE047531158c97c8C51b95c72a51E5e37e"
+      ) {
         const receiver = address;
         const res = await GETNFT({ receiver });
         console.log("rest", res);
@@ -38,17 +40,18 @@ function Badges() {
   return (
     <div className="text-center">
       <Header />
-      <h1 className="text-center mt-32 text-3xl font-bold pb-5 bg-[#140506] text-green-700">My badges</h1>
-      {field.length ===0 ? (
+      <h1 className="mt-32 bg-[#140506] pb-5 text-center text-3xl font-bold text-green-700">
+        My badges
+      </h1>
+      {field.length === 0 ? (
         <>
-          <div className="py-5 font-raj  text-2xl text-green-700 bg-[#140506]">
+          <div className="bg-[#140506] py-5  font-raj text-2xl text-green-700">
             You currently dont have any badges to claim
           </div>
         </>
       ) : (
         <>
-          <div className="flex gap-8 px-20 py-5 bg-[#140506] font-raj text-2xl text-green-700">
-           
+          <div className="flex gap-8 bg-[#140506] px-20 py-5 font-raj text-2xl text-green-700">
             {field?.map((data, index) => (
               <div key="1">
                 <BadgeTile
@@ -59,14 +62,10 @@ function Badges() {
                   product={data[2]}
                   quantity={data[3]}
                 />
-                <Link href="/ApplyLoan" >
-                <button
-                  className="text-md ml-3 md:ml-20 mt-2 px-10 py-4 flex h-[40px] items-center justify-center rounded-md bg-gradient-to-r from-green-500 to-green-700 pl-[10px] pr-[10px] text-center  text-white hover:cursor-pointer hover:brightness-75"
-                  
-                >
-                  Apply for Loan
-                </button>
-
+                <Link href="/ApplyLoan">
+                  <button className="text-md ml-3 mt-2 flex h-[40px] items-center justify-center rounded-md bg-gradient-to-r from-green-500 to-green-700 px-10 py-4 pl-[10px] pr-[10px] text-center text-white  hover:cursor-pointer hover:brightness-75 md:ml-20">
+                    Apply for Loan
+                  </button>
                 </Link>
               </div>
             ))}
