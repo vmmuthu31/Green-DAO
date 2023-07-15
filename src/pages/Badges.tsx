@@ -38,7 +38,7 @@ function Badges() {
   return (
     <div className="text-center">
       <Header />
-      <h1 className="text-center mt-24 text-3xl font-bold pb-10 bg-[#140506] text-green-700">My badges</h1>
+      <h1 className="text-center mt-32 text-3xl font-bold pb-5 bg-[#140506] text-green-700">My badges</h1>
       {field.length ===0 ? (
         <>
           <div className="py-5 font-raj  text-2xl text-green-700 bg-[#140506]">
@@ -47,7 +47,7 @@ function Badges() {
         </>
       ) : (
         <>
-          <div className="flex gap-12 px-20 py-5 bg-[#140506] font-raj text-2xl text-green-700">
+          <div className="flex gap-8 px-20 py-5 bg-[#140506] font-raj text-2xl text-green-700">
            
             {field?.map((data, index) => (
               <div key="1">
@@ -61,7 +61,7 @@ function Badges() {
                 />
                 <Link href="/ApplyLoan" >
                 <button
-                  className="text-md ml-20 mt-2 px-10 py-4 flex h-[40px] items-center justify-center rounded-md bg-gradient-to-r from-green-500 to-green-700 pl-[10px] pr-[10px] text-center  text-white hover:cursor-pointer hover:brightness-75"
+                  className="text-md ml-3 md:ml-20 mt-2 px-10 py-4 flex h-[40px] items-center justify-center rounded-md bg-gradient-to-r from-green-500 to-green-700 pl-[10px] pr-[10px] text-center  text-white hover:cursor-pointer hover:brightness-75"
                   
                 >
                   Apply for Loan

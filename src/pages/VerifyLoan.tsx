@@ -78,26 +78,28 @@ const VerifyLoan= () => {
               </div>
             </div>
           </div>
-          <table className='nadulav ml-60 '>
-  <tr className=' space-x-3 border-white border-2 text-2xl text-green-300 '>
-    <th className='p-5' >Farmer Name</th>
-    <th  className='p-5'>Aadhaar Number</th>
-    <th  className='p-5'>Amount of loan</th>
-    <th className='p-5'>Reason for Loan</th>
-    <th className='p-5'>Status</th>
-    <th className='p-5'>Applied At</th>
-  </tr>
+          <div className=' md:overflow-hidden overflow-x-scroll'>
+  <table className='mt-5 md:ml-32'>
+    <tr className='space-x-3 border-white border-2 text-2xl text-green-300'>
+      <th className='p-5'>Farmer Name</th>
+      <th className='p-5'>Aadhaar Number</th>
+      <th className='p-5'>Amount of loan</th>
+      <th className='p-5'>Reason for Loan</th>
+      <th className='p-5'>Status</th>
+      <th className='p-5'>Applied At</th>
+    </tr>
 
-  <tr className='border-white text-lg border-2' key="1" >
-    <td >{field[0]}</td>
-    <td >{parseInt(field[1])}</td>
-    <td >{parseInt(field[2])}</td>
-    <td >{field[3]}</td>
-    <td > {field[4]==true ? "approved" : "unapproved"}</td>
-    <td >2023</td>
-  </tr>
-  
-</table>
+    <tr className='border-white text-lg border-2 text-white text-center' key="1">
+      <td>{field[0]}</td>
+      <td>{parseInt(field[1])}</td>
+      <td>{parseInt(field[2])}</td>
+      <td>{field[3]}</td>
+      <td>{field[4] === true ? "approved" : "unapproved"}</td>
+      <td>2023</td>
+    </tr>
+  </table>
+</div>
+
         </div>
       
       </div>

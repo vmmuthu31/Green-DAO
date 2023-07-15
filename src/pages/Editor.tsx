@@ -46,18 +46,18 @@ function Editor() {
   const renderMetadataList = () => {
     return metadata.map((value, i) => {
       return (
-        <div className="flex flex-col" key={i}>
-          <div className="flex items-center gap-2">
-            <div className=" flex w-full items-center gap-4">
+        <div className="flex md:flex-col" key={i}>
+          <div className="flex  items-center gap-2">
+            <div className=" flex md:flex-row flex-col  items-center gap-4">
               <input
-                className="h-[44px] border-2 text-gray-800 p-2 sm:w-[400px]"
+                className="h-[44px] w-full border-2 text-gray-800 p-2 sm:w-[400px]"
                 {...register(String(i), {
                   required: 'This field is required.'
                 })}
                 placeholder="Lat, Long"
               />
               <input
-                className="h-[44px] border-2 p-2 text-gray-800 sm:w-[400px]"
+                className="h-[44px] w-full border-2 p-2 text-gray-800 sm:w-[400px]"
                 {...register(String(i + '_val'), {
                   required: 'This field is required.'
                 })}
@@ -83,7 +83,7 @@ function Editor() {
     return (
       <div>
         <p className="font-raj text-lg font-semibold">Certificate Metadata:</p>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col  md:gap-2">
           {renderMetadataList()}
           {metadata?.length >= 15 ? null : (
             <div
@@ -108,11 +108,11 @@ function Editor() {
   const renderNameWallet = () => {
     return (
       <div className=" ">
-        <div className="flex gap-4">
+        <div className="flex md:flex-row flex-col gap-4">
         <div>
-          <p className="font-raj text-lg font-semibold">Farmer Name: </p>
+          <p className="font-raj text-lg  font-semibold">Farmer Name: </p>
           <input
-            className="h-[44px] border-2 text-gray-800 p-2 sm:w-[400px]"
+            className="h-[44px] border-2 text-gray-800 p-2 w-full sm:w-[400px]"
             {...register('badgeName', {
               required: 'This field is required.'
             })}
@@ -123,18 +123,18 @@ function Editor() {
             Farmer Wallet Address:{' '}
           </p>
           <input
-            className="h-[44px] border-2 text-gray-800 p-2 sm:w-[400px]"
+            className="h-[44px] w-full border-2 text-gray-800 p-2 sm:w-[400px]"
             {...register('walletAddr', {
               required: 'This field is required.'
             })}
           />
         </div>
         </div>
-        <div className='flex gap-4'>
+        <div className='flex md:flex-row flex-col gap-4'>
         <div>
           <p className="font-raj text-lg font-semibold">Land Location: </p>
           <input
-            className="h-[44px] border-2 text-gray-800 p-2 sm:w-[400px]"
+            className="h-[44px] w-full border-2 text-gray-800 p-2 sm:w-[400px]"
             {...register('product', {
               required: 'This field is required.'
             })}
@@ -145,7 +145,7 @@ function Editor() {
             Area (in Acres):{' '}
           </p>
           <input
-            className="h-[44px] border-2 text-gray-800 p-2 sm:w-[400px]"
+            className="h-[44px] w-full border-2 text-gray-800 p-2 sm:w-[400px]"
             {...register('quantity', {
               required: 'This field is required.'
             })}
@@ -167,13 +167,13 @@ function Editor() {
   return (
     <div>
       <Header />
-      <div className="min-w-[770px] mt-24 bg-[#140506]">
+      <div className="md:min-w-[770px] px-5 mt-24 bg-[#140506]">
         
         <div className="flex  flex-col gap-4 py-12 px-2 sm:px-20">
           <div className="font-raj text-2xl text-white font-semibold">
             Proof of File/Image
           </div>
-          <div className="flex gap-6">
+          <div className="flex md:flex-row flex-col gap-6">
             <FileDropzone
               onSuccess={(File) => {
                 setFile(File)
@@ -188,7 +188,7 @@ function Editor() {
               {renderMetadataSection()}
             </div>
           </div>
-          <div className="mt-8 ml-80 w-80 sm:ml-64 sm:w-96">
+          <div className="mt-8 ml-10  sm:ml-64 sm:w-96">
           
             <button className="flex h-[50px] pl-[42px] pr-[42px] items-center justify-center rounded-md bg-gradient-to-r from-green-500 to-green-700 text-center font-raj text-white hover:cursor-pointer hover:brightness-75" 
                onClick={handleSubmit(mintcerti)}

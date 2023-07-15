@@ -42,28 +42,29 @@ const Receivedapplications = () => {
       <h1 className='text-center text-3xl mt-20 font-bold py-10 bg-[#140506] text-green-700'>
         Received Application
       </h1>
-      <div className='nadula md:ml-80 overflow-x-auto max-w-screen-md'>
-        <table className='md:table-fixed w-full'>
-          <tr className='md:space-x-3 border-white border-2 md:text-2xl text-green-300'>
-            <th className='p-5'>Farmer Name</th>
-            <th className='p-5'>Aadhaar Number</th>
-            <th className='p-5'>Amount of loan</th>
-            <th className='p-5'>Reason for Loan</th>
-            <th className='p-5'>Status</th>
-            <th className='p-5'>Applied At</th>
-          </tr>
-          {field?.map((data: any, index) => (
-            <tr className='border-white md:text-lg border-2' key={index}>
-              <td>{data[0]}</td>
-              <td>{parseInt(data[1])}</td>
-              <td>{parseInt(data[2])}</td>
-              <td>{data[3]}</td>
-              <td>{data[4] == true ? 'approved' : 'unapproved'}</td>
-              <td>2023</td>
-            </tr>
-          ))}
-        </table>
-      </div>
+      <div className='px-5 md:mx-20 overflow-x-scroll md:overflow-hidden'>
+  <table className=''>
+    <tr className='space-x-5 border-white border-2 text-2xl text-green-300'>
+      <th className='p-5'>Farmer Name</th>
+      <th className='p-5'>Aadhaar Number</th>
+      <th className='p-5'>Amount of loan</th>
+      <th className='p-5'>Reason for Loan</th>
+      <th className='p-5'>Status</th>
+      <th className='p-5'>Applied At</th>
+    </tr>
+    {field?.map((data: any, index) => (
+      <tr className='border-white text-lg border-2  text-white text-center' key={index}>
+        <td>{data[0]}</td>
+        <td>{parseInt(data[1])}</td>
+        <td>{parseInt(data[2])}</td>
+        <td>{data[3]}</td>
+        <td>{data[4] === true ? 'approved' : 'unapproved'}</td>
+        <td>2023</td>
+      </tr>
+    ))}
+  </table>
+</div>
+
     </div>
   );
 };
