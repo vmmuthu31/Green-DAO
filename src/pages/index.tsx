@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Head from 'next/head';
 import {BsWhatsapp} from "react-icons/bs"
 
+
 const Header = dynamic(() => import('./components/Header'), {
   ssr: false,
 })
@@ -33,7 +34,7 @@ export default function Home() {
             </h1>
             <span className="text-3xl  glow">Building the farmers for the next generation. Its an DAO to help the farmers with the supplychain management, getting identity and apply for the loans.</span> 
             <Link href="/ApplyLoan">
-            <button className="btn-grad mt-8 ">Get Started</button>
+            <button className="btn-grad3 mt-8 ">Get Started</button>
             </Link>
           </div>
         </div>

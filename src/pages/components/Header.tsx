@@ -1,22 +1,81 @@
 import Link from "next/link";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import useDarkMode from "use-dark-mode";
-import DarkModeToggle from "react-dark-mode-toggle";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
 import Image from "next/image";
 import { Dialog } from '@headlessui/react'
 import {AiOutlineBars} from "react-icons/ai"
 import {HiXMark} from 'react-icons/hi2'
+import detectProvider from '@metamask/detect-provider';
+import Web3 from 'web3';
+import truncateEthAddress from 'truncate-eth-address'
 import { useState } from 'react'
+import {Web3Context} from "../../config/Web3Context"
+
 
 const Header = () => {
   const darkMode = useDarkMode(false);
+ 
+
+  const getWeb3 = async () => {
+    const provider = await detectProvider();
+    if (provider) {
+      const web3 = new Web3(provider);
+      return web3;
+    } else {
+      return null;
+    }
+  };
+  
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { address, isConnected } = useAccount();
   // if (isConnected) {
+    const [accounts, setAccounts] = useState([]);
+    
+
+  const [connected, setConnected] = useState(false);
+
   //   console.log(address);
   // }
+  useEffect(() => {
+    async function detectWeb3Provider() {
+      const web3 = await getWeb3();
+
+      if (web3) {
+        try {
+          await window.ethereum.enable();
+          const accounts = await web3.eth.getAccounts();
+          setAccounts(accounts);
+          setConnected(true);
+        } catch (error) {
+          console.error('Error connecting:', error);
+        }
+      }
+    }
+    detectWeb3Provider();
+  }, [web3]);
+
+  const handleConnect = async () => {
+    const web3 = await getWeb3();
+    try {
+      if (web3) {
+        // Modern dapp browsers (like Metamask) will prompt the user to connect to the website
+        await window.ethereum.enable();
+        const accounts = await web3.eth.getAccounts();
+        setAccounts(accounts[0]);
+        setConnected(true);
+      }
+    } catch (error) {
+      console.error('Error connecting:', error);
+    }
+  };
+
+  const handleDisconnect = () => {
+    setAccounts([]);
+    setConnected(false);
+  };
+
   const navigation = [
     { name: 'Create an badge', href: '/Editor' },
     { name: 'Approve Loans', href: '/ApproveLoan' },
@@ -32,7 +91,9 @@ const Header = () => {
   ]
 
   return (
+    <Web3Context.Provider value={web3}>
    
+  
       <header className="absolute inset-x-0 top-0 z-50">
       <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
@@ -57,18 +118,27 @@ const Header = () => {
         </div>
        
         <div className="hidden lg:flex lg:gap-x-12 ">
-        {address == "0x3907bAdE047531158c97c8C51b95c72a51E5e37e" ? <>
+          
+        {address == "0x01e24d130cf4c5599954115c5026276b4797a171" ? <>
         {navigation.map((item) => (
-            <Link key={item.name} href={item.href} className="text-lg mt-2 text-white font-semibold leading-6 ">
+            <Link key={item.name} href={item.href} className="text-lg mt-2 text-white font-semibold leading-6 pt-5">
               {item.name}
             </Link>
           ))}</>:<>
            {navigation2.map((item) => (
-            <Link key={item.name} href={item.href} className="text-lg mt-2 text-white font-semibold leading-6 ">
+            <Link key={item.name} href={item.href} className="text-lg mt-2 text-white font-semibold leading-6 pt-5">
               {item.name}
             </Link>
           ))}</>}
-        <ConnectButton />
+      {connected ? (
+        <>
+          <div className="text-white font-bold text-md pt-7">My Account:{truncateEthAddress(address)}</div>
+          <button className="text-white font-bold text-md pt-2 btn-grad1" onClick={handleDisconnect}>Disconnect</button>
+        
+        </>
+      ) : (
+        <button className="text-white font-bold text-md pt-2 btn-grad" onClick={handleConnect}>Connect</button>
+      )}
         </div>
         
       </nav>
@@ -107,7 +177,15 @@ const Header = () => {
               {item.name}
             </Link>
           ))}</>}
-        <ConnectButton />
+       {connected ? (
+        <>
+          <div>Connected Accounts: {truncateEthAddress(address)}</div>
+          <button onClick={handleDisconnect}>Disconnect</button>
+        
+        </>
+      ) : (
+        <button onClick={handleConnect}>Connect</button>
+      )}
               </div>
               <div className="py-6">
                 <a
@@ -122,6 +200,7 @@ const Header = () => {
         </Dialog.Panel>
       </Dialog>
     </header>
+    </Web3Context.Provider>
   );
 };
 

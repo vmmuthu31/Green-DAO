@@ -10,9 +10,9 @@ if (ethereum) {
   isBrowser().web3 = new Web3(isBrowser().web3.currentProvider);
 }
 
-const AGRI_FUND = "0xF35B38aC053b0d7b956a924aE2A54Dc38C9B0bd7";
+const AGRI_FUND = "0xABd42e1345C028D4A770B0f2C531DfAaEAB81688";
 
-const LOAN = "0xFb493e57c37A336590Ffd97F9131cD7ab41BBF33";
+const LOAN = "0xD28aAc95672BE1fd3548DB6dd7512f1F88A9dA29";
 
 export const ADDLOAN = async ({
   farmername,
