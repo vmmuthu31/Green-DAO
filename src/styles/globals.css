@@ -59,8 +59,8 @@ html{
       padding: 15px 45px;
       text-align: center;
       text-transform: uppercase;
-      margin-left:80px;
-      margin-top:20px;
+      margin-left:70px;
+      margin-top:50px;
       transition: 0.5s;
       background-size: 200% auto;
       color: white;            
@@ -96,7 +96,7 @@ html{
     position: fixed;
     width: 60px;
     height: 60px;
-    bottom: 50px;
+    bottom:70px;
     right: 80px;
     background-color: #25d366;
     color: #FFF;
@@ -113,14 +113,14 @@ html{
 
 /* for mobile */
 @media screen and (max-width: 767px) {
-    .whatsapp-icon {
-        margin-top: 10px;
+    .fa-whatsapp {
+        margin-bottom: 8px;
     }
 
     .whatsapp_float {
         width: 40px;
         height: 40px;
-        bottom: 20px;
+        bottom: 30px;
         right: 10px;
         font-size: 22px;
     }
