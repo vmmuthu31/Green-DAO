@@ -36,6 +36,26 @@ const Receivedapplications = () => {
     const year = test?.getFullYear();
     return year;
   }
+  const [screenWidth, setScreenWidth] = useState(0);
+
+  // Function to handle window resize
+  const handleResize = () => {
+    setScreenWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    // Set initial screen width
+    setScreenWidth(window.innerWidth);
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  const outerRadius = screenWidth >= 768 ? 180 : 120;
 
  // Calculate the counts for approved and unapproved applications
 const approvedCount = field.filter((data) => data[4] === true).length;
@@ -64,10 +84,10 @@ const notPaidCount = field.filter((data) => data[8] === false).length;
     { name: 'Sanctioned', value: sanctionedCount, label: 'Sanctioned' },
     { name: 'Not Sanctioned', value: notSanctionedCount, label: 'Not Sanctioned' },
   ];
-
+ 
   // Custom colors for the pie chart
   const colors = ['#00C853', '#F44336', '#2196F3', '#FF9800', '#FFEB3B', '#9E9E9E'];
-
+ 
 // Calculate the total loan amount for approved and unapproved applications
 const totalApprovedLoanAmount = field
   .filter((data) => data[4] === true)
@@ -103,7 +123,7 @@ const totalNotSanctionedLoanAmount = field
       </h1>
       <div className=''>
         {/* Render the pie chart */}
-        <ResponsiveContainer width='100%' height={450}>
+        <ResponsiveContainer width='100%'  height={450}>
           <PieChart>
          
     <Pie
@@ -112,7 +132,7 @@ const totalNotSanctionedLoanAmount = field
       nameKey='label'
       cx='50%'
       cy='50%'
-      outerRadius={180}
+      outerRadius={outerRadius}
       fill='#8884d8'
       label={(entry) => {
         let totalAmount = 0;
