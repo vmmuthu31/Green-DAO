@@ -43,7 +43,7 @@ function ApplyLoan() {
         <div className="flex-1 flex flex-col justify-center px-4 pt-10 sm:px-4  lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full  bg-white px-10 py-5 rounded-xl max-w-sm lg:w-96">
             <div>
-              <h2 className="mt-5 text-3xl font-extrabold text-gray-900 text-green-700">Fill the form </h2>
+              <h2 className="mt-5 text-3xl font-extrabold text-gray-900 text-green-700">Apply Loan </h2>
               
             </div>
             <div className="mt-8">
