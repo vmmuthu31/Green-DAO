@@ -68,6 +68,32 @@ const notPaidCount = field.filter((data) => data[8] === false).length;
   // Custom colors for the pie chart
   const colors = ['#00C853', '#F44336', '#2196F3', '#FF9800', '#FFEB3B', '#9E9E9E'];
 
+// Calculate the total loan amount for approved and unapproved applications
+const totalApprovedLoanAmount = field
+  .filter((data) => data[4] === true)
+  .reduce((total, data) => total + parseInt(data[2]), 0);
+
+const totalUnapprovedLoanAmount = field
+  .filter((data) => data[4] === false)
+  .reduce((total, data) => total + parseInt(data[2]), 0);
+
+// Calculate the total loan amount for paid and not paid applications
+const totalPaidLoanAmount = field
+  .filter((data) => data[8] === true)
+  .reduce((total, data) => total + parseInt(data[2]), 0);
+
+const totalNotPaidLoanAmount = field
+  .filter((data) => data[8] === false)
+  .reduce((total, data) => total + parseInt(data[2]), 0);
+
+// Calculate the total loan amount for sanctioned and not sanctioned loans
+const totalSanctionedLoanAmount = field
+  .filter((data) => data[6] === true)
+  .reduce((total, data) => total + parseInt(data[2]), 0);
+
+const totalNotSanctionedLoanAmount = field
+  .filter((data) => data[6] === false)
+  .reduce((total, data) => total + parseInt(data[2]), 0);
 
   return (
     <div className='text-center bg-[#140506]'>
@@ -77,18 +103,45 @@ const notPaidCount = field.filter((data) => data[8] === false).length;
       </h1>
       <div className=''>
         {/* Render the pie chart */}
-        <ResponsiveContainer width='100%' height={420}>
+        <ResponsiveContainer width='100%' height={450}>
           <PieChart>
-            <Pie
-              data={pieChartData}
-              dataKey='value'
-              nameKey='label'
-              cx='50%'
-              cy='50%'
-              outerRadius={180}
-              fill='#8884d8'
-              label={(entry) => `${entry.label} (${(entry.value * 100 / totalLoanAmount).toFixed(2)}%)`}
-            >
+         
+    <Pie
+      data={pieChartData}
+      dataKey='value'
+      nameKey='label'
+      cx='50%'
+      cy='50%'
+      outerRadius={180}
+      fill='#8884d8'
+      label={(entry) => {
+        let totalAmount = 0;
+        switch (entry.name) {
+          case 'Approved':
+            totalAmount = totalApprovedLoanAmount;
+            break;
+          case 'Unapproved':
+            totalAmount = totalUnapprovedLoanAmount;
+            break;
+          case 'Paid':
+            totalAmount = totalPaidLoanAmount;
+            break;
+          case 'Not Paid':
+            totalAmount = totalNotPaidLoanAmount;
+            break;
+          case 'Sanctioned':
+            totalAmount = totalSanctionedLoanAmount;
+            break;
+          case 'Not Sanctioned':
+            totalAmount = totalNotSanctionedLoanAmount;
+            break;
+          default:
+            break;
+        }
+        return `${entry.label} (${(entry.value * 100 / totalAmount).toFixed(2)}%)`;
+      }}
+    >
+
               {pieChartData.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
               ))}
